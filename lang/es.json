@@ -1,0 +1,9 @@
+{
+  "menu": {
+    "home": "Inicio",
+    "teams": "Equipos"
+  },
+  "home": {
+    "description": "Bandits es un equipo competitivo de Brawl Stars."
+  }
+}

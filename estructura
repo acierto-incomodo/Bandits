@@ -1,0 +1,28 @@
+/bandits-web
+│
+├── index.html
+├── equipos.html
+├── equipo.html
+│
+├── style.css
+├── main.js
+│
+├── fonts/
+│   └── darkside/
+│       └── Darkside.otf
+│
+├── lang/
+│   ├── es.json
+│   └── en.json
+│
+├── templates/
+│   └── equipos.json
+│
+└── equipos/
+    ├── equipos.json
+    ├── equipo-1/
+    │   ├── es.json
+    │   └── en.json
+    └── equipo-2/
+        ├── es.json
+        └── en.json

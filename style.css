@@ -1,0 +1,158 @@
+@font-face {
+    font-family: "Darksite";
+    src: url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.eot");
+    src: url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.svg#Darksite")format("svg");
+}
+
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  font-family: "Darksite", Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* LAYOUT GLOBAL */
+body {
+  background-color: #0f0f0f;
+  color: #eaeaea;
+  font-family: "Darksite", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAV */
+nav {
+  background: #151515;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #eaeaea;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+nav a:hover {
+  color: #C49B2E;
+}
+
+/* TITULOS */
+#bandits-font {
+  font-family: "Darkside", Arial, sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  padding: 30px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* HOME */
+main p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* TEAM LIST */
+#teams-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.team-card {
+  background: linear-gradient(145deg, #1b1b1b, #121212);
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.team-card a {
+  color: #eaeaea;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* EQUIPO */
+#team-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+#team-content li {
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+}
+
+/* LINKS */
+a {
+  color: #C49B2E;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+  background: #121212;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 768px) {
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  #bandits-font {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  main p {
+    text-align: center;
+  }
+
+  .team-card {
+    padding: 20px;
+  }
+}
+
+#bandits-font {
+    font-family: "Darkside", sans-serif;
+}

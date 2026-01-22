@@ -1,0 +1,9 @@
+{
+  "teamName": "Bandits Alpha",
+  "description": "Equipo principal competitivo",
+  "players": ["Aitor", "PlayerX", "PlayerY"],
+  "socials": {
+    "twitter": "https://x.com/Bandits_GG_",
+    "discord": "https://discord.gg/bandits"
+  }
+}

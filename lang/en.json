@@ -1,0 +1,9 @@
+{
+  "menu": {
+    "home": "Home",
+    "teams": "Teams"
+  },
+  "home": {
+    "description": "Bandits is a competitive Brawl Stars team."
+  }
+}

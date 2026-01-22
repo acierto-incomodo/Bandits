@@ -1,0 +1,6 @@
+{
+  "teams": [
+    { "id": "equipo-1", "name": "Bandits Alpha" },
+    { "id": "equipo-2", "name": "Bandits Beta" }
+  ]
+}
