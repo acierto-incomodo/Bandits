@@ -71,7 +71,8 @@ main p {
 }
 
 /* TEAM LIST */
-#teams-list {
+#teams-list,
+#sponsors-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -83,10 +84,15 @@ main p {
   border-radius: 16px;
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
-  position: relative; /* Para que el enlace se pueda estirar dentro */
 }
 
-.team-card a {
+/* Estilo para que la tarjeta de equipo sea un solo botón */
+#teams-list .team-card {
+  position: relative;
+}
+
+/* Estiramos el enlace solo en la lista de equipos */
+#teams-list .team-card a {
   color: #eaeaea;
   text-decoration: none;
   font-size: 1.2rem;
