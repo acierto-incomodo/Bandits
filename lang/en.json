@@ -1,9 +1,18 @@
 {
   "menu": {
     "home": "Home",
-    "teams": "Teams"
+    "teams": "Teams",
+    "sponsors": "Sponsors"
   },
   "home": {
     "description": "Bandits is a competitive Brawl Stars team."
+  },
+  "teams": {
+    "title": "TEAMS"
+  },
+  "sponsors": {
+    "title": "SPONSORS",
+    "website": "Website",
+    "twitter": "Twitter (X)"
   }
 }
