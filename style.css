@@ -1,76 +1,118 @@
-@font-face {
-    font-family: "Darksite";
-    src: url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.eot");
-    src: url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/69dc4df72be58454331b0c98e2290671.svg#Darksite")format("svg");
+/* 
+  MATERIAL YOU 3 - DARK THEME
+  Inspired by Google's Material Design 3 color system.
+  Using CSS variables for easy theming.
+*/
+:root {
+  /* Color Palette */
+  --md-sys-color-primary: #9ecaff;
+  --md-sys-color-on-primary: #003258;
+  --md-sys-color-primary-container: #00497d;
+  --md-sys-color-on-primary-container: #d1e4ff;
+  
+  --md-sys-color-secondary: #bac6d8;
+  --md-sys-color-on-secondary: #253140;
+
+  --md-sys-color-background: #1a1c1e;
+  --md-sys-color-on-background: #e2e2e6;
+  
+  --md-sys-color-surface: #1a1c1e; /* Same as background for a seamless look */
+  --md-sys-color-on-surface: #e2e2e6;
+  --md-sys-color-on-surface-variant: #c2c7ce; /* For less prominent text */
+
+  --md-sys-color-surface-container-high: #292b2f; /* For cards and elevated components */
+  --md-sys-color-outline: #8c9199;
+
+  /* Typography */
+  --md-sys-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  
+  /* Shape */
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
 }
 
-/* RESET BÁSICO */
+/* RESET & BASE STYLES */
 * {
   box-sizing: border-box;
-  font-family: "Darksite", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 html, body {
   height: 100%;
-  margin: 0;
 }
 
-/* LAYOUT GLOBAL */
 body {
-  background-color: #0f0f0f;
-  color: #eaeaea;
-  font-family: "Darksite", Arial, sans-serif;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  font-family: var(--md-sys-font-family);
   display: flex;
   flex-direction: column;
+  line-height: 1.5;
 }
 
-/* NAV */
+/* TOP APP BAR (NAV) */
 nav {
-  background: #151515;
-  padding: 15px 25px;
+  background: var(--md-sys-color-surface);
+  padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant, #42474e);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 nav a {
-  color: #eaeaea;
+  color: var(--md-sys-color-on-surface);
   text-decoration: none;
-  font-weight: bold;
-  margin-right: 15px;
+  font-weight: 500; /* Medium weight for titles/labels */
+  font-size: 0.875rem; /* Label Large */
+  padding: 8px 12px;
+  border-radius: 99px; /* Pill shape for hover state */
+  transition: background-color 0.2s ease-in-out;
 }
 
 nav a:hover {
-  color: #C49B2E;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--md-sys-color-primary);
 }
 
-/* TITULOS */
+/* TYPOGRAPHY */
+h1 {
+  /* Material's Display Small */
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 2.75rem;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+  color: var(--md-sys-color-on-surface);
+}
+
+/* The custom font ID is still used in the HTML, so we style it */
 #bandits-font {
-  font-family: "Darkside", Arial, sans-serif;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-family: var(--md-sys-font-family);
+  text-transform: none; /* Remove uppercase */
+  letter-spacing: normal;
 }
 
-/* MAIN */
+/* MAIN CONTENT */
 main {
   flex: 1;
-  padding: 30px;
+  padding: 32px;
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
 }
 
-/* HOME */
 main p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  /* Material's Body Large */
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  color: var(--md-sys-color-on-surface-variant);
 }
 
-/* TEAM LIST */
+/* CARDS (for Teams & Sponsors) */
 #teams-list,
 #sponsors-list {
   display: grid;
@@ -79,85 +121,124 @@ main p {
 }
 
 .team-card {
-  background: linear-gradient(145deg, #1b1b1b, #121212);
-  padding: 25px;
-  border-radius: 16px;
+  padding: 24px;
+  border-radius: var(--md-sys-shape-corner-large);
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  border: 1px solid transparent;
 }
 
-/* Estilo para que la tarjeta de equipo sea un solo botón */
+/* Team Card as a single link */
 #teams-list .team-card {
+  background-color: var(--md-sys-color-surface-container-high);
   position: relative;
 }
 
-/* Estiramos el enlace solo en la lista de equipos */
 #teams-list .team-card a {
-  color: #eaeaea;
+  color: var(--md-sys-color-on-surface);
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  /* Hacemos que el enlace ocupe toda la tarjeta */
+  /* Material's Title Large */
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.75rem;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Centramos el texto dentro del enlace estirado */
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: var(--md-sys-shape-corner-large); /* Match parent */
+}
+
+#teams-list .team-card a:hover {
+    color: var(--md-sys-color-primary);
 }
 
 .team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  background-color: #34363a; /* Slightly lighter on hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
-/* EQUIPO */
+/* Sponsor Card specific styles */
+.sponsor-name {
+  display: block;
+  margin-bottom: 16px;
+  /* Material's Title Large */
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+  color: var(--md-sys-color-on-surface);
+}
+
+#sponsors-list .team-card {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+}
+
+#sponsors-list .team-card .sponsor-name,
+#sponsors-list .team-card a {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#sponsors-list .team-card a {
+  margin: 0 8px;
+}
+
+/* TEAM DETAIL PAGE */
 #team-content ul {
   list-style: none;
-  padding: 0;
 }
 
 #team-content li {
-  padding: 8px 0;
-  border-bottom: 1px solid #222;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
-/* LINKS */
+/* GENERAL LINKS (Text Buttons) */
 a {
-  color: #C49B2E;
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  font-weight: 500;
 }
 
 a:hover {
-  opacity: 0.8;
+  text-decoration: underline;
+  opacity: 1; /* Remove the old opacity effect */
 }
 
 /* FOOTER */
 footer {
-  background: #121212;
+  background: var(--md-sys-color-surface);
   text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-  color: #aaa;
-  border-top: 1px solid #222;
+  padding: 24px;
+  font-size: 0.875rem; /* Label Large */
+  color: var(--md-sys-color-on-surface-variant);
+  border-top: 1px solid var(--md-sys-color-outline-variant, #42474e);
 }
 
 /* 📱 RESPONSIVE */
 @media (max-width: 768px) {
-
   nav {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    padding: 16px;
   }
 
   main {
-    padding: 20px;
+    padding: 24px;
   }
 
-  #bandits-font {
-    font-size: 2rem;
+  h1, #bandits-font {
+    font-size: 1.75rem; /* Headline Medium */
+    line-height: 2.25rem;
     text-align: center;
   }
 
@@ -168,8 +249,4 @@ footer {
   .team-card {
     padding: 20px;
   }
-}
-
-#bandits-font {
-    font-family: "Darkside", sans-serif;
 }
