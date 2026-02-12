@@ -58,10 +58,16 @@ async function loadSponsorsList(text) {
   const data = await loadJSON("patrocinadores/patrocinadores.json");
 
   const sponsorsHtml = data.sponsors.map(sponsor => `
-      <div class="team-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${sponsor.background}')">
+      <div class="team-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('${sponsor.background}')">
         <span class="sponsor-name">${sponsor.name}</span>
-        <a href="${sponsor.website}" target="_blank">${text.sponsors.website}</a> | 
-        <a href="${sponsor.socials.twitter}" target="_blank">${text.sponsors.twitter}</a>
+        <div class="sponsor-actions">
+          <a href="${sponsor.website}" target="_blank" class="btn-apple">
+            <i class="fas fa-globe"></i> ${text.sponsors.website}
+          </a>
+          <a href="${sponsor.socials.twitter}" target="_blank" class="btn-apple">
+            <i class="fab fa-twitter"></i> ${text.sponsors.twitter}
+          </a>
+        </div>
       </div>
     `).join('');
 

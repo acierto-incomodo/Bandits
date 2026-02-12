@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 /* 
   MATERIAL YOU 3 - DARK THEME
   Inspired by Google's Material Design 3 color system.
@@ -5,30 +6,32 @@
 */
 :root {
   /* Color Palette */
-  --md-sys-color-primary: #9ecaff;
-  --md-sys-color-on-primary: #003258;
-  --md-sys-color-primary-container: #00497d;
-  --md-sys-color-on-primary-container: #d1e4ff;
+  --md-sys-color-primary: #D0BCFF;
+  --md-sys-color-on-primary: #381E72;
+  --md-sys-color-primary-container: #4F378B;
+  --md-sys-color-on-primary-container: #EADDFF;
   
-  --md-sys-color-secondary: #bac6d8;
-  --md-sys-color-on-secondary: #253140;
+  --md-sys-color-secondary: #CCC2DC;
+  --md-sys-color-on-secondary: #332D41;
 
-  --md-sys-color-background: #1a1c1e;
-  --md-sys-color-on-background: #e2e2e6;
+  --md-sys-color-background: #141218;
+  --md-sys-color-on-background: #E6E1E5;
   
-  --md-sys-color-surface: #1a1c1e; /* Same as background for a seamless look */
-  --md-sys-color-on-surface: #e2e2e6;
-  --md-sys-color-on-surface-variant: #c2c7ce; /* For less prominent text */
+  --md-sys-color-surface: #141218;
+  --md-sys-color-on-surface: #E6E1E5;
+  --md-sys-color-on-surface-variant: #CAC4D0;
 
-  --md-sys-color-surface-container-high: #292b2f; /* For cards and elevated components */
-  --md-sys-color-outline: #8c9199;
+  --md-sys-color-surface-container-high: #2B2930;
+  --md-sys-color-outline: #938F99;
 
   /* Typography */
   --md-sys-font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --md-sys-font-family-brand: "Montserrat", sans-serif;
   
   /* Shape */
   --md-sys-shape-corner-medium: 12px;
   --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-full: 999px;
 }
 
 /* RESET & BASE STYLES */
@@ -53,33 +56,40 @@ body {
 
 /* TOP APP BAR (NAV) */
 nav {
-  background: var(--md-sys-color-surface);
+  background: rgba(20, 18, 24, 0.75); /* Glassmorphism base */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--md-sys-color-outline-variant, #42474e);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 nav a {
   color: var(--md-sys-color-on-surface);
   text-decoration: none;
+  font-family: var(--md-sys-font-family-brand);
   font-weight: 500; /* Medium weight for titles/labels */
   font-size: 0.875rem; /* Label Large */
   padding: 8px 12px;
-  border-radius: 99px; /* Pill shape for hover state */
-  transition: background-color 0.2s ease-in-out;
+  border-radius: var(--md-sys-shape-corner-full);
+  transition: all 0.3s cubic-bezier(0.2, 0.0, 0, 1.0);
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(208, 188, 255, 0.12);
   color: var(--md-sys-color-primary);
+  transform: scale(1.02);
 }
 
 /* TYPOGRAPHY */
 h1 {
   /* Material's Display Small */
+  font-family: var(--md-sys-font-family-brand);
   font-size: 2.25rem;
   font-weight: 400;
   line-height: 2.75rem;
@@ -124,8 +134,9 @@ main p {
   padding: 24px;
   border-radius: var(--md-sys-shape-corner-large);
   text-align: center;
-  transition: background-color 0.2s, box-shadow 0.2s;
-  border: 1px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
 
 /* Team Card as a single link */
@@ -137,6 +148,7 @@ main p {
 #teams-list .team-card a {
   color: var(--md-sys-color-on-surface);
   text-decoration: none;
+  font-family: var(--md-sys-font-family-brand);
   /* Material's Title Large */
   font-size: 1.375rem;
   font-weight: 500;
@@ -157,8 +169,8 @@ main p {
 }
 
 .team-card:hover {
-  background-color: #34363a; /* Slightly lighter on hover */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
 }
 
 /* Sponsor Card specific styles */
@@ -170,6 +182,7 @@ main p {
   font-weight: 500;
   line-height: 1.75rem;
   color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-font-family-brand);
 }
 
 #sponsors-list .team-card {
@@ -181,14 +194,42 @@ main p {
   min-height: 180px;
 }
 
-#sponsors-list .team-card .sponsor-name,
-#sponsors-list .team-card a {
+#sponsors-list .team-card .sponsor-name {
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
-#sponsors-list .team-card a {
-  margin: 0 8px;
+/* Apple-style buttons for sponsors */
+.sponsor-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.btn-apple {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-apple:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  text-decoration: none;
 }
 
 /* TEAM DETAIL PAGE */
@@ -221,7 +262,7 @@ footer {
   padding: 24px;
   font-size: 0.875rem; /* Label Large */
   color: var(--md-sys-color-on-surface-variant);
-  border-top: 1px solid var(--md-sys-color-outline-variant, #42474e);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* 📱 RESPONSIVE */
