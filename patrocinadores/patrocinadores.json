@@ -1,12 +1,12 @@
 {
-  "sponsors": [
+  "partners": [
     {
       "name": "Zer0 Pulse Gaming",
       "website": "https://zer0pulse.com/",
       "socials": {
         "twitter": "https://x.com/Zer0PulseGG"
       },
-      "background": "assets/img/sponsor/zero_pulse/zero_pulse.jpg"
+      "background": "assets/img/partners/zero_pulse/zero_pulse.jpg"
     }
   ]
 }

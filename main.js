@@ -27,7 +27,7 @@ function loadTeamsPage(text) {
 }
 
 function loadSponsorsPage(text) {
-  const el = document.getElementById("sponsors-list");
+  const el = document.getElementById("partners-list");
   if (!el) return;
   const title = document.getElementById("bandits-font");
   if (title) title.textContent = text.sponsors.title;
@@ -52,21 +52,25 @@ async function loadTeamsList() {
 }
 
 async function loadSponsorsList(text) {
-  const container = document.getElementById("sponsors-list");
+  const container = document.getElementById("partners-list");
   if (!container) return;
 
   const data = await loadJSON("patrocinadores/patrocinadores.json");
 
-  const sponsorsHtml = data.sponsors.map(sponsor => `
-      <div class="team-card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('${sponsor.background}')">
-        <span class="sponsor-name">${sponsor.name}</span>
-        <div class="sponsor-actions">
-          <a href="${sponsor.website}" target="_blank" class="btn-apple">
-            <i class="fas fa-globe"></i> ${text.sponsors.website}
-          </a>
-          <a href="${sponsor.socials.twitter}" target="_blank" class="btn-apple">
-            <i class="fab fa-twitter"></i> ${text.sponsors.twitter}
-          </a>
+  const sponsorsHtml = data.partners.map(partner => `
+      <div class="team-card">
+        <img src="${partner.background}" alt="${partner.name}" class="partner-bg">
+        <div class="partner-overlay"></div>
+        <div class="partner-content">
+          <span class="partner-name">${partner.name}</span>
+          <div class="partner-actions">
+            <a href="${partner.website}" target="_blank" class="btn-apple">
+              <i class="fas fa-globe"></i> ${text.sponsors.website}
+            </a>
+            <a href="${partner.socials.twitter}" target="_blank" class="btn-apple">
+              <i class="fab fa-twitter"></i> ${text.sponsors.twitter}
+            </a>
+          </div>
         </div>
       </div>
     `).join('');

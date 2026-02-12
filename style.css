@@ -124,7 +124,7 @@ main p {
 
 /* CARDS (for Teams & Sponsors) */
 #teams-list,
-#sponsors-list {
+#partners-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -137,6 +137,7 @@ main p {
   transition: transform 0.2s, box-shadow 0.2s;
   border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
+  position: relative; /* Necesario para posicionar la imagen absoluta */
 }
 
 /* Team Card as a single link */
@@ -173,8 +174,8 @@ main p {
   transform: translateY(-2px);
 }
 
-/* Sponsor Card specific styles */
-.sponsor-name {
+/* Partner Card specific styles */
+.partner-name {
   display: block;
   margin-bottom: 16px;
   /* Material's Title Large */
@@ -185,24 +186,59 @@ main p {
   font-family: var(--md-sys-font-family-brand);
 }
 
-#sponsors-list .team-card {
-  background-size: cover;
-  background-position: center;
+#partners-list .team-card {
+  padding: 0; /* Quitamos padding para que la imagen cubra todo */
+  min-height: 220px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Nueva estructura para partners */
+.partner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .partner-bg {
+  transform: scale(1.1);
+}
+
+.partner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.85));
+  z-index: 1;
+}
+
+.partner-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 180px;
+  align-items: center;
+  padding: 24px;
 }
 
-#sponsors-list .team-card .sponsor-name {
+#partners-list .team-card .partner-name {
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-/* Apple-style buttons for sponsors */
-.sponsor-actions {
+/* Apple-style buttons for partners */
+.partner-actions {
   display: flex;
   gap: 12px;
   justify-content: center;
