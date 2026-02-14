@@ -7,9 +7,10 @@ async function loadJSON(path) {
 
 function loadMenu(text) {
   document.getElementById("menu").innerHTML = `
-    <a href="index.html">${text.menu.home}</a>
-    <a href="equipos.html">${text.menu.teams}</a>
-    <a href="patrocinadores.html">${text.menu.sponsors}</a>
+    <a href="index.html" class="btn-apple">${text.menu.home}</a>
+    <a href="equipos.html" class="btn-apple">${text.menu.teams}</a>
+    <a href="patrocinadores.html" class="btn-apple">${text.menu.sponsors}</a>
+    <a href="social.html" class="btn-apple">${text.menu.social}</a>
   `;
 }
 
@@ -31,6 +32,45 @@ function loadSponsorsPage(text) {
   if (!el) return;
   const title = document.getElementById("bandits-font");
   if (title) title.textContent = text.sponsors.title;
+}
+
+function loadSocialPage(text) {
+  const container = document.getElementById("social-content");
+  if (!container) return;
+
+  const title = document.getElementById("bandits-font");
+  if (title) title.textContent = text.social.title;
+
+  const ytTitle = document.getElementById("youtube-title");
+  if (ytTitle) ytTitle.textContent = text.social.youtube;
+
+  const twTitle = document.getElementById("twitter-title");
+  if (twTitle) twTitle.textContent = text.social.twitter;
+
+  // Cargar Videos de YouTube (IDs manuales por ahora)
+  // TODO: Reemplazar estos IDs con los videos reales que quieras mostrar
+  const videoIds = ["dQw4w9WgXcQ", "M7lc1UVf-VE"]; 
+  
+  const ytList = document.getElementById("youtube-list");
+  if (ytList) {
+    ytList.innerHTML = videoIds.map(id => `
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    `).join('');
+  }
+
+  // Cargar Twitter Timeline
+  const twFeed = document.getElementById("twitter-feed");
+  if (twFeed) {
+    // TODO: Cambia 'BanditsBS' por el usuario real de Twitter
+    twFeed.innerHTML = `<a class="twitter-timeline" data-theme="dark" data-height="600" href="https://x.com/Bandits_GG_?ref_src=twsrc%5Etfw">Tweets by Bandits</a>`;
+    
+    const script = document.createElement("script");
+    script.src = "https://platform.x.com/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }
 }
 
 async function loadTeamsList() {
@@ -99,10 +139,14 @@ async function loadTeam() {
       description: (d) => `<p>${d.description}</p>`,
       players: (d) => `<ul>${d.players.map(p => `<li>${p}</li>`).join("")}</ul>`,
       socials: (d) => `
-          <p>
-            <a href="${d.socials.twitter}">Twitter</a> |
-            <a href="${d.socials.discord}">Discord</a>
-          </p>
+          <div class="partner-actions" style="justify-content: flex-start;">
+            <a href="${d.socials.twitter}" target="_blank" class="btn-apple">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="${d.socials.discord}" target="_blank" class="btn-apple">
+              <i class="fab fa-discord"></i> Discord
+            </a>
+          </div>
         `
     };
   
@@ -116,7 +160,9 @@ async function loadTeam() {
     container.innerHTML = `
       <h1 id="bandits-font">Error</h1>
       <p>No se pudo cargar la información del equipo. Es posible que el equipo no exista o que haya un problema con los archivos de datos.</p>
-      <a href="equipos.html">Volver a la lista de equipos</a>
+      <div style="margin-top: 16px;">
+        <a href="equipos.html" class="btn-apple">Volver a la lista de equipos</a>
+      </div>
     `;
   }
 }
@@ -129,6 +175,7 @@ async function main() {
   loadHome(i18nText);
   loadTeamsPage(i18nText);
   loadSponsorsPage(i18nText);
+  loadSocialPage(i18nText);
  
   // Load other parts of the page. They can run in parallel.
   Promise.all([
