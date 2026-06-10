@@ -3,6 +3,7 @@
     "home": "Inicio",
     "teams": "Equipos",
     "sponsors": "Patrocinadores",
+    "shop": "Tienda",
     "social": "Social"
   },
   "home": {
@@ -15,6 +16,10 @@
     "title": "PATROCINADORES",
     "website": "Sitio Web",
     "twitter": "Twitter (X)"
+  },
+  "shop": {
+    "title": "TIENDA",
+    "description": "Descubre la merch de Bandits y elige tu producto favorito."
   },
   "social": {
     "title": "REDES SOCIALES",

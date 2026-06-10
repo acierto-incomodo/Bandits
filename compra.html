@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandits - Compra</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="bandits.jpg" type="image/jpeg">
+</head>
+<body>
+  <nav id="menu"></nav>
+
+  <main>
+    <h1>Finalizar compra</h1>
+    <p>Selecciona tu producto y completa los datos para confirmar tu pedido.</p>
+
+    <section class="checkout-grid">
+      <article class="checkout-card">
+        <h2 id="checkout-product-name">Producto</h2>
+        <p id="checkout-product-description"></p>
+        <p class="product-price" id="checkout-product-price"></p>
+      </article>
+
+      <article class="checkout-card">
+        <form class="checkout-form">
+          <label for="name">Nombre</label>
+          <input id="name" name="name" type="text" placeholder="Tu nombre" required>
+
+          <label for="email">Correo</label>
+          <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+
+          <label for="address">Dirección</label>
+          <textarea id="address" name="address" rows="3" placeholder="Tu dirección" required></textarea>
+
+          <button type="submit" class="btn-apple">Confirmar pedido</button>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Bandits | StormGamesStudios</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    const products = {
+      camiseta: {
+        name: 'Camiseta Bandits',
+        description: 'Camiseta oficial con diseño de la marca.',
+        price: '24 €'
+      },
+      sudadera: {
+        name: 'Sudadera oficial',
+        description: 'Sudadera cómoda para entrenar y acompañar tus días en el equipo.',
+        price: '39 €'
+      },
+      gorra: {
+        name: 'Gorra Bandits',
+        description: 'Gorra ligera con el logo de Bandits.',
+        price: '16 €'
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const productKey = params.get('product') || 'camiseta';
+    const product = products[productKey] || products.camiseta;
+
+    document.getElementById('checkout-product-name').textContent = product.name;
+    document.getElementById('checkout-product-description').textContent = product.description;
+    document.getElementById('checkout-product-price').textContent = `Precio: ${product.price}`;
+  </script>
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+  ></script>
+</body>
+</html>

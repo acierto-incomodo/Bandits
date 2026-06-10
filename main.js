@@ -10,6 +10,7 @@ function loadMenu(text) {
     <a href="index.html" class="btn-apple">${text.menu.home}</a>
     <a href="equipos.html" class="btn-apple">${text.menu.teams}</a>
     <a href="patrocinadores.html" class="btn-apple">${text.menu.sponsors}</a>
+    <a href="tienda.html" class="btn-apple">${text.menu.shop}</a>
     <a href="social.html" class="btn-apple">${text.menu.social}</a>
   `;
 }
@@ -34,6 +35,14 @@ function loadSponsorsPage(text) {
   if (title) title.textContent = text.sponsors.title;
 }
 
+function loadShopPage(text) {
+  const title = document.getElementById("shop-title");
+  if (title) title.textContent = text.shop.title;
+
+  const description = document.getElementById("shop-description");
+  if (description) description.textContent = text.shop.description;
+}
+
 function loadSocialPage(text) {
   const container = document.getElementById("social-content");
   if (!container) return;
@@ -47,24 +56,18 @@ function loadSocialPage(text) {
   const twTitle = document.getElementById("twitter-title");
   if (twTitle) twTitle.textContent = text.social.twitter;
 
-  // Cargar Videos de YouTube (IDs manuales por ahora)
-  // TODO: Reemplazar estos IDs con los videos reales que quieras mostrar
-  const videoIds = ["dQw4w9WgXcQ", "M7lc1UVf-VE"]; 
-  
   const ytList = document.getElementById("youtube-list");
   if (ytList) {
-    ytList.innerHTML = videoIds.map(id => `
+    ytList.innerHTML = `
       <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/videoseries?listType=user_uploads&list=Nelo_Caster" title="Últimos videos de Nelo Caster" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-    `).join('');
+    `;
   }
 
-  // Cargar Twitter Timeline
   const twFeed = document.getElementById("twitter-feed");
   if (twFeed) {
-    // TODO: Cambia 'BanditsBS' por el usuario real de Twitter
-    twFeed.innerHTML = `<a class="twitter-timeline" data-theme="dark" data-height="600" href="https://x.com/Bandits_GG_?ref_src=twsrc%5Etfw">Tweets by Bandits</a>`;
+    twFeed.innerHTML = `<a class="twitter-timeline" data-theme="dark" data-height="600" data-tweet-limit="4" href="https://x.com/Bandits_GG_?ref_src=twsrc%5Etfw">Tweets by Bandits</a>`;
     
     const script = document.createElement("script");
     script.src = "https://platform.x.com/widgets.js";
@@ -175,6 +178,7 @@ async function main() {
   loadHome(i18nText);
   loadTeamsPage(i18nText);
   loadSponsorsPage(i18nText);
+  loadShopPage(i18nText);
   loadSocialPage(i18nText);
  
   // Load other parts of the page. They can run in parallel.

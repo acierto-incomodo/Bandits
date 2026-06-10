@@ -3,6 +3,7 @@
     "home": "Home",
     "teams": "Teams",
     "sponsors": "Sponsors",
+    "shop": "Shop",
     "social": "Social"
   },
   "home": {
@@ -14,6 +15,15 @@
   "sponsors": {
     "title": "SPONSORS",
     "website": "Website",
+    "twitter": "Twitter (X)"
+  },
+  "shop": {
+    "title": "SHOP",
+    "description": "Explore Bandits merch and choose your favorite item."
+  },
+  "social": {
+    "title": "SOCIAL",
+    "youtube": "Latest Videos",
     "twitter": "Twitter (X)"
   }
 }
