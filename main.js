@@ -60,7 +60,7 @@ function loadSocialPage(text) {
   if (ytList) {
     ytList.innerHTML = `
       <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/videoseries?listType=user_uploads&list=Nelo_Caster" title="Últimos videos de Nelo Caster" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/videoseries?listType=user_uploads&list=bandits_g_g" title="Últimos videos de Bandits" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     `;
   }
